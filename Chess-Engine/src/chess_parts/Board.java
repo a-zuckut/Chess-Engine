@@ -1,10 +1,12 @@
 package chess_parts;
 
+import chess_logic.Move;
 import chess_logic.Opening;
+import chess_logic.Position;
 
 public class Board {
 
-	Piece[][] board;
+	private Piece[][] board;
 
 	boolean init = false;
 
@@ -16,10 +18,16 @@ public class Board {
 		}
 	}
 
+	public void move(Position pos, Move move) {
+
+		
+		
+	}
+
 	public String toString() {
 		String output = Opening.convertColToLetter(-1) + " ";
 		for (int i = 0; i < board.length + 1; i++) {
-			if(i > 0)
+			if (i > 0)
 				output += (i) + " ";
 			for (int j = 0; j < board[0].length; j++) {
 				if (i == 0)
@@ -32,8 +40,8 @@ public class Board {
 		return output;
 	}
 
-	public static void main(String[] args) {
-		System.out.println(new Board());
+	public Piece[][] getBoard() {
+		return board;
 	}
 
 }
