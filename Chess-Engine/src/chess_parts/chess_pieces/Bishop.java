@@ -1,14 +1,16 @@
 package chess_parts.chess_pieces;
 
+import java.util.ArrayList;
+
 import chess_logic.Color;
-import chess_logic.Move;
-import chess_logic.Position;
+import chess_logic.Location;
+import chess_parts.Board;
 import chess_parts.Piece;
 import chess_parts.PieceTypes;
 
 public class Bishop extends Piece {
 
-	public Bishop(Color color, Position position) {
+	public Bishop(Color color, Location position) {
 		super(color, position, PieceTypes.Bishop);
 	}
 
@@ -18,20 +20,20 @@ public class Bishop extends Piece {
 	}
 
 	/**
-	 * IMPLEMENT
+	 * Adding possible moves to ArrayList possibleGenericMoves Then
 	 */
 	@Override
-	public String[] validMoves() {
-		// TODO Auto-generated method stub
+	public ArrayList<Location> validMoves(Board board) {
 		return null;
 	}
 
-	/**
-	 * IMPLEMENT
-	 */
 	@Override
-	public boolean validMove(Move move) {
-		// TODO Auto-generated method stub
+	public ArrayList<Location> possibleGenericMoves() {
+		return null;
+	}
+
+	@Override
+	public boolean validMove(Location move, Color turn) {
 		return false;
 	}
 

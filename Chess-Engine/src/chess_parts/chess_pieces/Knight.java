@@ -1,14 +1,16 @@
 package chess_parts.chess_pieces;
 
+import java.util.ArrayList;
+
 import chess_logic.Color;
-import chess_logic.Move;
-import chess_logic.Position;
+import chess_logic.Location;
+import chess_parts.Board;
 import chess_parts.Piece;
 import chess_parts.PieceTypes;
 
 public class Knight extends Piece {
 
-	public Knight(Color color, Position position) {
+	public Knight(Color color, Location position) {
 		super(color, position, PieceTypes.Knight);
 	}
 
@@ -17,20 +19,19 @@ public class Knight extends Piece {
 		return type.toString();
 	}
 
-	/**
-	 * IMPLEMENT
-	 */
 	@Override
-	public String[] validMoves() {
-		return new String[]{""};
+	public ArrayList<Location> validMoves(Board board) {
+		return null;
 	}
 
-	/**
-	 * IMPLEMENT
-	 */
 	@Override
-	public boolean validMove(Move move) {
+	public boolean validMove(Location move, Color turn) {
 		return false;
+	}
+
+	@Override
+	public ArrayList<Location> possibleGenericMoves() {
+		return null;
 	}
 
 }

@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
+import chess_logic.Location;
 import chess_parts.Board;
 
 public class BoardTests {
@@ -13,7 +14,7 @@ public class BoardTests {
 		Board board = new Board();
 		assertEquals(
 				  "X A  B  C  D  E  F  G  H  \n"
-				+ "1 WR WN BB WQ WK BB WN WR \n"
+				+ "1 WR WN WB WQ WK WB WN WR \n"
 				+ "2 WP WP WP WP WP WP WP WP \n"
 				+ "3 -- -- -- -- -- -- -- -- \n"
 				+ "4 -- -- -- -- -- -- -- -- \n"
@@ -23,7 +24,94 @@ public class BoardTests {
 				+ "8 BR BN BB BQ BK BB BN BR \n",
 				board.toString());
 		
-		
+	}
+	
+	@Test
+	public void testingGetWhiteRook() {
+		assertEquals("WR",new Board().getPiece(new Location(0, 0)).abrev());
+		assertEquals("WR",new Board().getPiece(new Location(0, 7)).abrev());
+	}
+	
+	@Test
+	public void testingGetWhiteKnight() {
+		assertEquals("WN",new Board().getPiece(new Location(0, 1)).abrev());
+		assertEquals("WN",new Board().getPiece(new Location(0, 6)).abrev());
+	}
+	
+	@Test
+	public void testingGetWhiteBishop() {
+		assertEquals("WB",new Board().getPiece(new Location(0, 2)).abrev());
+		assertEquals("WB",new Board().getPiece(new Location(0, 5)).abrev());	
+	}
+	
+	@Test
+	public void testingGetWhiteKing() {
+		assertEquals("WK",new Board().getPiece(new Location(0, 4)).abrev());
+	}
+
+	@Test
+	public void testingGetWhiteQueen() {
+		assertEquals("WQ",new Board().getPiece(new Location(0, 3)).abrev());
+	}
+	
+	@Test
+	public void testingGetWhitePawns() {
+		assertEquals("WP",new Board().getPiece(new Location(1, 0)).abrev());
+		assertEquals("WP",new Board().getPiece(new Location(1, 1)).abrev());
+		assertEquals("WP",new Board().getPiece(new Location(1, 2)).abrev());
+		assertEquals("WP",new Board().getPiece(new Location(1, 3)).abrev());
+		assertEquals("WP",new Board().getPiece(new Location(1, 4)).abrev());
+		assertEquals("WP",new Board().getPiece(new Location(1, 5)).abrev());
+		assertEquals("WP",new Board().getPiece(new Location(1, 6)).abrev());
+		assertEquals("WP",new Board().getPiece(new Location(1, 7)).abrev());
+	}
+	
+	@Test
+	public void testingGetBlackRook() {
+		assertEquals("BR",new Board().getPiece(new Location(7, 0)).abrev());
+		assertEquals("BR",new Board().getPiece(new Location(7, 7)).abrev());	
+	}
+	
+	@Test
+	public void testingGetBlackKnight() {
+		assertEquals("BN",new Board().getPiece(new Location(7, 1)).abrev());
+		assertEquals("BN",new Board().getPiece(new Location(7, 6)).abrev());	
+	}
+	
+	@Test
+	public void testingGetBlackBishop() {
+		assertEquals("BB",new Board().getPiece(new Location(7, 2)).abrev());
+		assertEquals("BB",new Board().getPiece(new Location(7, 5)).abrev());	
+	}
+	
+	@Test
+	public void testingGetBlackKing() {
+		assertEquals("BK",new Board().getPiece(new Location(7, 4)).abrev());
+	}
+
+	@Test
+	public void testingGetBlackQueen() {
+		assertEquals("BQ",new Board().getPiece(new Location(7, 3)).abrev());
+	}
+	
+	@Test
+	public void testingGetBlackPawns() {
+		assertEquals("BP",new Board().getPiece(new Location(6, 0)).abrev());
+		assertEquals("BP",new Board().getPiece(new Location(6, 1)).abrev());
+		assertEquals("BP",new Board().getPiece(new Location(6, 2)).abrev());
+		assertEquals("BP",new Board().getPiece(new Location(6, 3)).abrev());
+		assertEquals("BP",new Board().getPiece(new Location(6, 4)).abrev());
+		assertEquals("BP",new Board().getPiece(new Location(6, 5)).abrev());
+		assertEquals("BP",new Board().getPiece(new Location(6, 6)).abrev());
+		assertEquals("BP",new Board().getPiece(new Location(6, 7)).abrev());
+	}
+	
+	@Test
+	public void testingEmptySpots() {
+		assertEquals("--", new Board().getPiece(new Location(4, 4)).abrev());
+		assertEquals("--", new Board().getPiece(new Location(2, 2)).abrev());
+		assertEquals("--", new Board().getPiece(new Location(5, 3)).abrev());
+		assertEquals("--", new Board().getPiece(new Location(3, 0)).abrev());
 	}
 
 }
