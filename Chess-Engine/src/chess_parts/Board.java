@@ -24,7 +24,7 @@ public class Board {
 	}
 
 	public boolean move(Location current_pos, Location final_pos) {
-		if(board[current_pos.getY()][current_pos.getX()].color == turn) { // Turn Error
+		if(board[current_pos.getY()][current_pos.getX()].color != turn) { // Turn Error
 			return false;
 		}
 		board[current_pos.getY()][current_pos.getX()].validMoves(this);
