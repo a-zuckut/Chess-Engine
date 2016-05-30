@@ -118,7 +118,6 @@ public class BoardTests {
 	@Test
 	public void testingWhitePiecesOnCorrectSpots() {
 		Board board = new Board();
-		System.out.println(board.getBoard()[0][0]);
 		assertEquals("WHITE Rook at A1", board.getBoard()[0][0].toString());
 		assertEquals("WHITE Knight at B1", board.getBoard()[0][1].toString());
 		assertEquals("WHITE Bishop at C1", board.getBoard()[0][2].toString());
@@ -141,7 +140,6 @@ public class BoardTests {
 	@Test
 	public void testingBlackPiecesOnCorrectSpots() {
 		Board board = new Board();
-		System.out.println(board.getBoard()[0][0]);
 		assertEquals("BLACK Rook at A8", board.getBoard()[7][0].toString());
 		assertEquals("BLACK Knight at B8", board.getBoard()[7][1].toString());
 		assertEquals("BLACK Bishop at C8", board.getBoard()[7][2].toString());

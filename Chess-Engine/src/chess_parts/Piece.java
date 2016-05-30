@@ -52,7 +52,7 @@ public abstract class Piece {
 	public abstract String setPiece();
 
 	public String toString() {
-		return color.toString() + " " + name + " at " + position.toString();
+		return color.toString() + " " + name + " at " + position.boardLocation();
 	}
 
 	public Color getColor() {

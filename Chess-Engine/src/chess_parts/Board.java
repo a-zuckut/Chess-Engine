@@ -27,8 +27,8 @@ public class Board {
 		if(board[current_pos.getY()][current_pos.getX()].color != turn) { // Turn Error
 			return false;
 		}
+		
 		board[current_pos.getY()][current_pos.getX()].validMoves(this);
-		System.out.println(board[current_pos.getY()][current_pos.getX()]);
 		boolean isValid = board[current_pos.getY()][current_pos.getX()].validMove(final_pos, turn);
 
 		if (isValid) {

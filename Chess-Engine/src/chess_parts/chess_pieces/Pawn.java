@@ -23,21 +23,21 @@ public class Pawn extends Piece {
 	public ArrayList<Location> validMoves(Board board) {
 		possibleMovesDependingOnBoard = new ArrayList<>();
 		
-		System.out.println(position);
-		
 		possibleGenericMoves();
 		Piece[][] currentBoard = board.getBoard();
 		if (color == Color.WHITE) {
-			System.out.println("gotHere");
-			System.out.println(currentBoard[position.getY()][position.getX()]);
-			if (currentBoard[position.getY()][position.getX() + 1].getPieceType() == PieceTypes.NULL) {
+			// Simple Advances are possible
+			if (currentBoard[position.getX() + 1][position.getY()].getPieceType() == PieceTypes.NULL) {
 				possibleMovesDependingOnBoard.add(new Location(position.getY(), position.getX() + 1));
 				if (position.getX() == 1
-						&& currentBoard[position.getY()][position.getX() + 2].getPieceType() == PieceTypes.NULL) {
+						&& currentBoard[position.getX() + 2][position.getY()].getPieceType() == PieceTypes.NULL) {
 					possibleMovesDependingOnBoard.add(new Location(position.getY(), position.getX() + 2));
 				}
 			}
-		} else /* Must be black */ {
+			// Taking Pieces
+		} 
+		if(color == Color.BLACK) {
+			// Simple Advances are possible
 			if (currentBoard[position.getY()][position.getX() - 1].getPieceType() == PieceTypes.NULL) {
 				possibleMovesDependingOnBoard.add(new Location(position.getY(), position.getX() - 1));
 				if (position.getX() == 6
@@ -45,8 +45,8 @@ public class Pawn extends Piece {
 					possibleMovesDependingOnBoard.add(new Location(position.getY(), position.getX() - 2));
 				}
 			}
+			// Taking Pieces
 		}
-		System.out.println(possibleMovesDependingOnBoard);
 		return possibleMovesDependingOnBoard;
 	}
 

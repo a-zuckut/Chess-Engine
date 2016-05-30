@@ -46,7 +46,7 @@ public class Location {
 	 * used by piece objects
 	 */
 	public String toString() {
-		return OpeningAndHelpers.convertColToLetter(row) + (column + 1);
+		return OpeningAndHelpers.convertColToLetter(column) + (row + 1);
 	}
 	
 	@Override
@@ -70,7 +70,7 @@ public class Location {
 	 * @return
 	 */
 	public String boardLocation() {
-		return OpeningAndHelpers.convertColToLetter(column) + (row + 1);
+		return OpeningAndHelpers.convertColToLetter(row) + (column + 1);
 	}
 	
 	
