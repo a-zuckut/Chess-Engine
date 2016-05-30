@@ -1,7 +1,5 @@
 package chess_logic;
 
-import java.util.Arrays;
-
 public class Location {
 
 	private int column;
@@ -44,11 +42,17 @@ public class Location {
 		return row;
 	}
 	
+	/**
+	 * used by piece objects
+	 */
 	public String toString() {
-		return OpeningAndHelpers.convertColToLetter(column) + (row + 1);
+		return OpeningAndHelpers.convertColToLetter(row) + (column + 1);
 	}
 	
 	@Override
+	/**
+	 * Override for comparing Location objects.
+	 */
 	public boolean equals(Object object) {
 		if(object instanceof Location) {
 			return (column == ((Location)object).column && row == ((Location)object).row);
@@ -59,6 +63,14 @@ public class Location {
 	@Override
 	public int hashCode() {
 	    return (int)(3 * 13 * column + 41 * 37 * row + Math.pow(4, 10));
+	}
+
+	/**
+	 * Used when just printing out a location
+	 * @return
+	 */
+	public String boardLocation() {
+		return OpeningAndHelpers.convertColToLetter(column) + (row + 1);
 	}
 	
 	

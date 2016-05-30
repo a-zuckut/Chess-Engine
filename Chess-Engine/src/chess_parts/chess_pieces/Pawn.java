@@ -23,9 +23,13 @@ public class Pawn extends Piece {
 	public ArrayList<Location> validMoves(Board board) {
 		possibleMovesDependingOnBoard = new ArrayList<>();
 		
+		System.out.println(position);
+		
 		possibleGenericMoves();
 		Piece[][] currentBoard = board.getBoard();
 		if (color == Color.WHITE) {
+			System.out.println("gotHere");
+			System.out.println(currentBoard[position.getY()][position.getX()]);
 			if (currentBoard[position.getY()][position.getX() + 1].getPieceType() == PieceTypes.NULL) {
 				possibleMovesDependingOnBoard.add(new Location(position.getY(), position.getX() + 1));
 				if (position.getX() == 1
@@ -42,6 +46,7 @@ public class Pawn extends Piece {
 				}
 			}
 		}
+		System.out.println(possibleMovesDependingOnBoard);
 		return possibleMovesDependingOnBoard;
 	}
 

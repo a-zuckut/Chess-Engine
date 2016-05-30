@@ -42,7 +42,7 @@ public class OpeningAndHelpers {
 		board[0][3] = new Queen(Color.WHITE, new Location(0, 3));
 
 		board[7][4] = new King(Color.BLACK, new Location(7, 4));
-		board[0][4] = new King(Color.WHITE, new Location(7, 4));
+		board[0][4] = new King(Color.WHITE, new Location(0, 4));
 
 		for (int i = 0; i < board.length; i++) {
 			for (int j = 0; j < board[0].length; j++) {

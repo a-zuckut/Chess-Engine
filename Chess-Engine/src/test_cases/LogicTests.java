@@ -67,11 +67,11 @@ public class LogicTests {
 
 	@Test
 	public void testingNamesOfLocation() {
-		assertEquals("A1", new Location(0, 0).toString());
-		assertEquals("C2", new Location(2, 1).toString());
-		assertEquals("H1", new Location(7, 0).toString());
-		assertEquals("H8", new Location(7, 7).toString());
-		assertEquals("E2", new Location(4, 1).toString());
+		assertEquals("A1", new Location(0, 0).boardLocation());
+		assertEquals("B3", new Location(1, 2).boardLocation());
+		assertEquals("H1", new Location(7, 0).boardLocation());
+		assertEquals("H8", new Location(7, 7).boardLocation());
+		assertEquals("E2", new Location(4, 1).boardLocation());
 	}
 	
 	@Test
