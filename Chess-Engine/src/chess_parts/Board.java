@@ -33,6 +33,7 @@ public class Board {
 
 		if (isValid) {
 			board[final_pos.getY()][final_pos.getX()] = board[current_pos.getY()][current_pos.getX()];
+			board[final_pos.getY()][final_pos.getX()].updatePosition(final_pos);
 			board[current_pos.getY()][current_pos.getX()] = new Empty();
 			turn = Color.next(turn);
 			return isValid;
