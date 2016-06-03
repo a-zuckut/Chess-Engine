@@ -76,7 +76,7 @@ public abstract class Piece {
 	}
 	
 	public void updatePosition(Location new_pos) {
-		position = new_pos;
+		position = new Location(new_pos.getY(), new_pos.getX());
 	}
 
 }

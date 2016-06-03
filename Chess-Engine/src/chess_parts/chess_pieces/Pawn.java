@@ -26,11 +26,8 @@ public class Pawn extends Piece {
 		possibleGenericMoves();
 		Piece[][] currentBoard = board.getBoard();
 		if (color == Color.WHITE) {
-			// Simple Advances are possible
-			System.out.println(this);
 			if (currentBoard[position.getX() + 1][position.getY()].getPieceType() == PieceTypes.NULL) {
 				possibleMovesDependingOnBoard.add(new Location(position.getY(), position.getX() + 1));
-				System.out.println(new Location(position.getY(), position.getX() + 1));
 				if (position.getX() == 1
 						&& currentBoard[position.getX() + 2][position.getY()].getPieceType() == PieceTypes.NULL) {
 					possibleMovesDependingOnBoard.add(new Location(position.getY(), position.getX() + 2));
@@ -69,8 +66,27 @@ public class Pawn extends Piece {
 				}
 			}
 			// Taking Pieces
+			if (position.getY() > 0 && position.getY() < 7 && position.getX() < 7 && position.getX() > 0) {
+				if (currentBoard[position.getX() - 1][position.getY() - 1].getPieceType() != PieceTypes.NULL) {
+					possibleMovesDependingOnBoard.add(new Location(position.getY() - 1, position.getX() - 1));
+				}
+				if (currentBoard[position.getX() - 1][position.getY() + 1].getPieceType() != PieceTypes.NULL) {
+					possibleMovesDependingOnBoard.add(new Location(position.getY() + 1, position.getX() - 1));
+				}
+			} else {
+				if (position.getY() < 7) {
+					if (currentBoard[position.getX() - 1][position.getY() - 1].getPieceType() != PieceTypes.NULL) {
+						possibleMovesDependingOnBoard.add(new Location(position.getY() - 1, position.getX() - 1));
+					}
+				} else { // must be at position 7 (H)
+					if (currentBoard[position.getX() - 1][position.getY() + 1].getPieceType() != PieceTypes.NULL) {
+						possibleMovesDependingOnBoard.add(new Location(position.getY() + 1, position.getX() - 1));
+					}
+				}
+			}
 		}
-		System.out.println(possibleMovesDependingOnBoard);
+//		System.out.println(board);
+//		System.out.println(this + " " + possibleMovesDependingOnBoard + "\n");
 		return possibleMovesDependingOnBoard;
 
 	}
