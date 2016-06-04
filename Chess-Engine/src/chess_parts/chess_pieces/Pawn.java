@@ -4,11 +4,15 @@ import java.util.ArrayList;
 
 import chess_logic.Color;
 import chess_logic.Location;
+import chess_logic.Move;
 import chess_parts.Board;
 import chess_parts.Piece;
 import chess_parts.PieceTypes;
 
 public class Pawn extends Piece {
+	
+	public boolean enPassentPossible = false;
+	public int enPassentNum = 0;
 
 	public Pawn(Color color, Location position) {
 		super(color, position, PieceTypes.Pawn);
@@ -22,9 +26,12 @@ public class Pawn extends Piece {
 	@Override
 	public ArrayList<Location> validMoves(Board board) {
 		possibleMovesDependingOnBoard = new ArrayList<>();
-
+		enPassentPossible = false;
+		enPassentNum = 0;
+		
 		possibleGenericMoves();
 		Piece[][] currentBoard = board.getBoard();
+		
 		if (color == Color.WHITE) {
 			if (currentBoard[position.getX() + 1][position.getY()].getPieceType() == PieceTypes.NULL) {
 				possibleMovesDependingOnBoard.add(new Location(position.getY(), position.getX() + 1));
@@ -85,6 +92,58 @@ public class Pawn extends Piece {
 				}
 			}
 		}
+		
+		// Enpassents
+				ArrayList<Move> curr_moves = null;
+				Move lastMove = null;
+				if(!board.getMoves().isEmpty()) {
+					curr_moves = board.getMoves();
+					lastMove = curr_moves.get(curr_moves.size() - 1);
+					if(color == Color.WHITE && position.getX() == 4 && lastMove.init().getY() - 1 == position.getY() + 2 && 
+							lastMove.fin().getY() - 1 == position.getY()) {
+						try{
+							if(currentBoard[position.getX() + 1][position.getY() + 1].getPieceType() == PieceTypes.NULL &&
+									currentBoard[position.getX()][position.getY() + 1].getPieceType() == PieceTypes.Pawn) {
+								possibleMovesDependingOnBoard.add(new Location(position.getY() + 1, position.getX() + 1));
+								enPassentPossible = true;
+								enPassentNum++;
+							}
+						}catch(ArrayIndexOutOfBoundsException e){
+						}
+						try{
+							if(currentBoard[position.getX() + 1][position.getY() - 1].getPieceType() == PieceTypes.NULL &&
+									currentBoard[position.getX()][position.getY() - 1].getPieceType() == PieceTypes.Pawn) {
+								possibleMovesDependingOnBoard.add(new Location(position.getY() - 1, position.getX() + 1));
+								enPassentPossible = true;
+								enPassentNum++;
+							}
+						}catch(ArrayIndexOutOfBoundsException e){
+						}
+					}
+					
+					if(color == Color.BLACK && position.getX() == 3 && lastMove.init().getY() + 1 == position.getY() - 2 && 
+							lastMove.fin().getY() + 1 == position.getY()) {
+						try{
+							if(currentBoard[position.getX() - 1][position.getY() - 1].getPieceType() == PieceTypes.NULL &&
+									currentBoard[position.getX()][position.getY() - 1].getPieceType() == PieceTypes.Pawn) {
+								possibleMovesDependingOnBoard.add(new Location(position.getY() - 1, position.getX() - 1));
+								enPassentPossible = true;
+								enPassentNum++;
+							}
+						}catch(ArrayIndexOutOfBoundsException e){
+						}
+						try{
+							if(currentBoard[position.getX() - 1][position.getY() + 1].getPieceType() == PieceTypes.NULL &&
+									currentBoard[position.getX()][position.getY() + 1].getPieceType() == PieceTypes.Pawn) {
+								possibleMovesDependingOnBoard.add(new Location(position.getY() + 1, position.getX() - 1));
+								enPassentPossible = true;
+								enPassentNum++;
+							}
+						}catch(ArrayIndexOutOfBoundsException e){
+						}
+					}
+				}
+		
 //		System.out.println(board);
 //		System.out.println(this + " " + possibleMovesDependingOnBoard + "\n");
 		return possibleMovesDependingOnBoard;

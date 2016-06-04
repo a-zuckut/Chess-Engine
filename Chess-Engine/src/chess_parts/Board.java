@@ -7,6 +7,7 @@ import chess_logic.Location;
 import chess_logic.Move;
 import chess_logic.OpeningAndHelpers;
 import chess_parts.chess_pieces.Empty;
+import chess_parts.chess_pieces.Pawn;
 
 public class Board {
 
@@ -41,6 +42,21 @@ public class Board {
 			board[final_pos.getY()][final_pos.getX()] = board[current_pos.getY()][current_pos.getX()];
 			board[final_pos.getY()][final_pos.getX()].updatePosition(final_pos);
 			board[current_pos.getY()][current_pos.getX()] = new Empty();
+			if(board[final_pos.getY()][final_pos.getX()].getPieceType() == PieceTypes.Pawn) {
+				if(((Pawn)(board[final_pos.getY()][final_pos.getX()])).enPassentPossible) {
+					for(int i = 0; i < ((Pawn)(board[final_pos.getY()][final_pos.getX()])).enPassentNum; i++) {
+						if(board[final_pos.getY()][final_pos.getX()].possibleMovesDependingOnBoard.get(board[final_pos.getY()][final_pos.getX()]
+								.possibleMovesDependingOnBoard.size() - i - 1).equals(final_pos)){
+							if(Color.WHITE == turn) {
+								board[current_pos.getY()][final_pos.getX()] = new Empty();
+							}
+							if(Color.BLACK == turn) {
+								board[current_pos.getY()][final_pos.getX()] = new Empty();
+							}
+						}
+					}
+				}
+			}
 			turn = Color.next(turn);
 			moves.add(new Move(current_pos, final_pos));
 			return isValid;
@@ -71,6 +87,10 @@ public class Board {
 
 	public Piece[][] getBoard() {
 		return board;
+	}
+	
+	public ArrayList<Move> getMoves() {
+		return moves;
 	}
 
 }

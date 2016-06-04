@@ -10,6 +10,7 @@ public abstract class Piece {
 	protected PieceTypes type;
 	public Location position;
 	public Color color;
+	
 	private String name;
 	private String abrev;
 	
