@@ -577,5 +577,148 @@ public class PawnTests {
 		
 	}
 	
+	@Test
+	public void testingBlackCaptureD4() {
+		Board board = new Board();
+		assertEquals(true, board.move(new Location(3, 1), new Location(3, 3)));
+		assertEquals(true, board.move(new Location(3, 6), new Location(3, 4)));
+		assertEquals(true, board.move(new Location(4, 1), new Location(4, 3)));
+		assertEquals(true, board.move(new Location(3, 4), new Location(4, 3)));
+		
+		assertEquals("X A  B  C  D  E  F  G  H  \n"
+				   + "1 WR WN WB WQ WK WB WN WR \n"
+				   + "2 WP WP WP -- -- WP WP WP \n"
+				   + "3 -- -- -- -- -- -- -- -- \n"
+				   + "4 -- -- -- WP BP -- -- -- \n"
+				   + "5 -- -- -- -- -- -- -- -- \n"
+				   + "6 -- -- -- -- -- -- -- -- \n"
+				   + "7 BP BP BP -- BP BP BP BP \n"
+				   + "8 BR BN BB BQ BK BB BN BR \n",
+				board.toString());
+	}
+	
+	@Test
+	public void testingBlackCaptureB4() {
+		Board board = new Board();
+		assertEquals(true, board.move(new Location(1, 1), new Location(1, 3)));
+		assertEquals(true, board.move(new Location(0, 6), new Location(0, 4)));
+		assertEquals(true, board.move(new Location(3, 1), new Location(3, 2)));
+		assertEquals(true, board.move(new Location(0, 4), new Location(1, 3)));
+		
+		assertEquals("X A  B  C  D  E  F  G  H  \n"
+				   + "1 WR WN WB WQ WK WB WN WR \n"
+				   + "2 WP -- WP -- WP WP WP WP \n"
+				   + "3 -- -- -- WP -- -- -- -- \n"
+				   + "4 -- BP -- -- -- -- -- -- \n"
+				   + "5 -- -- -- -- -- -- -- -- \n"
+				   + "6 -- -- -- -- -- -- -- -- \n"
+				   + "7 -- BP BP BP BP BP BP BP \n"
+				   + "8 BR BN BB BQ BK BB BN BR \n",
+				board.toString());
+	}
+	
+	@Test
+	public void testingBlackCaptureA4() {
+		Board board = new Board();
+		assertEquals(true, board.move(new Location(0, 1), new Location(0, 3)));
+		assertEquals(true, board.move(new Location(1, 6), new Location(1, 4)));
+		assertEquals(true, board.move(new Location(3, 1), new Location(3, 2)));
+		assertEquals(true, board.move(new Location(1, 4), new Location(0, 3)));
+		
+		assertEquals("X A  B  C  D  E  F  G  H  \n"
+				   + "1 WR WN WB WQ WK WB WN WR \n"
+				   + "2 -- WP WP -- WP WP WP WP \n"
+				   + "3 -- -- -- WP -- -- -- -- \n"
+				   + "4 BP -- -- -- -- -- -- -- \n"
+				   + "5 -- -- -- -- -- -- -- -- \n"
+				   + "6 -- -- -- -- -- -- -- -- \n"
+				   + "7 BP -- BP BP BP BP BP BP \n"
+				   + "8 BR BN BB BQ BK BB BN BR \n",
+				board.toString());
+	}
+	
+	@Test
+	public void testingBlackCaptureH4() {
+		Board board = new Board();
+		assertEquals(true, board.move(new Location(7, 1), new Location(7, 3)));
+		assertEquals(true, board.move(new Location(6, 6), new Location(6, 4)));
+		assertEquals(true, board.move(new Location(3, 1), new Location(3, 2)));
+		assertEquals(true, board.move(new Location(6, 4), new Location(7, 3)));
+		
+		assertEquals("X A  B  C  D  E  F  G  H  \n"
+				   + "1 WR WN WB WQ WK WB WN WR \n"
+				   + "2 WP WP WP -- WP WP WP -- \n"
+				   + "3 -- -- -- WP -- -- -- -- \n"
+				   + "4 -- -- -- -- -- -- -- BP \n"
+				   + "5 -- -- -- -- -- -- -- -- \n"
+				   + "6 -- -- -- -- -- -- -- -- \n"
+				   + "7 BP BP BP BP BP BP -- BP \n"
+				   + "8 BR BN BB BQ BK BB BN BR \n",
+				board.toString());
+	}
+	
+	@Test
+	public void testingBlackCaptureG4() {
+		Board board = new Board();
+		assertEquals(true, board.move(new Location(6, 1), new Location(6, 3)));
+		assertEquals(true, board.move(new Location(7, 6), new Location(7, 4)));
+		assertEquals(true, board.move(new Location(3, 1), new Location(3, 2)));
+		assertEquals(true, board.move(new Location(7, 4), new Location(6, 3)));
+		
+		assertEquals("X A  B  C  D  E  F  G  H  \n"
+				   + "1 WR WN WB WQ WK WB WN WR \n"
+				   + "2 WP WP WP -- WP WP -- WP \n"
+				   + "3 -- -- -- WP -- -- -- -- \n"
+				   + "4 -- -- -- -- -- -- BP -- \n"
+				   + "5 -- -- -- -- -- -- -- -- \n"
+				   + "6 -- -- -- -- -- -- -- -- \n"
+				   + "7 BP BP BP BP BP BP BP -- \n"
+				   + "8 BR BN BB BQ BK BB BN BR \n",
+				board.toString());
+	}
+	
+	@Test
+	public void testingEnpassantWhite() {
+		Board board = new Board();
+		assertEquals(true, board.move(new Location(3, 1), new Location(3, 3)));
+		assertEquals(true, board.move(new Location(0, 6), new Location(0, 4)));
+		assertEquals(true, board.move(new Location(3, 3), new Location(3, 4)));
+		assertEquals(true, board.move(new Location(4, 6), new Location(4, 4)));
+		assertEquals(true, board.move(new Location(3, 4), new Location(4, 5)));
+		
+		assertEquals("X A  B  C  D  E  F  G  H  \n"
+				   + "1 WR WN WB WQ WK WB WN WR \n"
+				   + "2 WP WP WP -- WP WP WP WP \n"
+				   + "3 -- -- -- -- -- -- -- -- \n"
+				   + "4 -- -- -- -- -- -- -- -- \n"
+				   + "5 BP -- -- -- -- -- -- -- \n"
+				   + "6 -- -- -- -- WP -- -- -- \n"
+				   + "7 -- BP BP BP -- BP BP BP \n"
+				   + "8 BR BN BB BQ BK BB BN BR \n",
+				board.toString());
+		
+	}
+	
+	@Test
+	public void testingEnpassantBlack() {
+		Board board = new Board();
+		assertEquals(true, board.move(new Location(3, 1), new Location(3, 3)));
+		assertEquals(true, board.move(new Location(4, 6), new Location(4, 4)));
+		assertEquals(true, board.move(new Location(3, 3), new Location(3, 4)));
+		assertEquals(true, board.move(new Location(4, 4), new Location(4, 3)));
+		assertEquals(true, board.move(new Location(5, 1), new Location(5, 3)));
+		assertEquals(true, board.move(new Location(4, 3), new Location(5, 2)));
+		
+		assertEquals("X A  B  C  D  E  F  G  H  \n"
+				   + "1 WR WN WB WQ WK WB WN WR \n"
+				   + "2 WP WP WP -- WP -- WP WP \n"
+				   + "3 -- -- -- -- -- BP -- -- \n"
+				   + "4 -- -- -- -- -- -- -- -- \n"
+				   + "5 -- -- -- WP -- -- -- -- \n"
+				   + "6 -- -- -- -- -- -- -- -- \n"
+				   + "7 BP BP BP BP -- BP BP BP \n"
+				   + "8 BR BN BB BQ BK BB BN BR \n",
+				board.toString());
+	}
 	
 }

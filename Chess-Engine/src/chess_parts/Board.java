@@ -1,7 +1,10 @@
 package chess_parts;
 
+import java.util.ArrayList;
+
 import chess_logic.Color;
 import chess_logic.Location;
+import chess_logic.Move;
 import chess_logic.OpeningAndHelpers;
 import chess_parts.chess_pieces.Empty;
 
@@ -12,10 +15,13 @@ public class Board {
 	 */
 	private Piece[][] board;
 	private Color turn = Color.WHITE;
+	
+	private ArrayList<Move> moves;
 
 	boolean init = false;
 
 	public Board() {
+		moves = new ArrayList<>();
 		board = new Piece[8][8];
 		if (!init) {
 			OpeningAndHelpers.setupNewBoard(board);
@@ -36,6 +42,7 @@ public class Board {
 			board[final_pos.getY()][final_pos.getX()].updatePosition(final_pos);
 			board[current_pos.getY()][current_pos.getX()] = new Empty();
 			turn = Color.next(turn);
+			moves.add(new Move(current_pos, final_pos));
 			return isValid;
 		} else {
 			return isValid;

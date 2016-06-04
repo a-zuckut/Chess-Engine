@@ -74,11 +74,11 @@ public class Pawn extends Piece {
 					possibleMovesDependingOnBoard.add(new Location(position.getY() + 1, position.getX() - 1));
 				}
 			} else {
-				if (position.getY() < 7) {
+				if (position.getY() > 0) {
 					if (currentBoard[position.getX() - 1][position.getY() - 1].getPieceType() != PieceTypes.NULL) {
 						possibleMovesDependingOnBoard.add(new Location(position.getY() - 1, position.getX() - 1));
 					}
-				} else { // must be at position 7 (H)
+				} else { // must be at position 0 (H)
 					if (currentBoard[position.getX() - 1][position.getY() + 1].getPieceType() != PieceTypes.NULL) {
 						possibleMovesDependingOnBoard.add(new Location(position.getY() + 1, position.getX() - 1));
 					}
