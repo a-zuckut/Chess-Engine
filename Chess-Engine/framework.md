@@ -1,9 +1,11 @@
 
 As I will plan it, you have your pieces on the board stored as objects.
 
-	Ex:
-  RNBQKBNR
-  PPPPPPPP
+```
+Ex:
+	RNBQKBNR
+	PPPPPPPP
+```
 
 So, I will need to store all the pieces with their current position. I will also need to store the possible moves for the pieces. So, let's say you have a pawn. You can go forward 2 or 1 depending on your position. The question is, how am I going to store the possible moves. 
 
