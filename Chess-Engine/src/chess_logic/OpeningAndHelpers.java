@@ -12,6 +12,13 @@ import chess_parts.chess_pieces.Rook;
 public class OpeningAndHelpers {
 
 	public static Piece[][] setupNewBoard(Piece[][] board) {
+
+		for (int i = 0; i < board.length; i++) {
+			for (int j = 0; j < board[0].length; j++) {
+				board[i][j] = new Empty(new Location(i, j));
+			}
+		}
+
 		for (int i = 0; i < board.length; i++) {
 			board[6][i] = new Pawn(Color.BLACK, new Location(6, i));
 		}
@@ -43,14 +50,6 @@ public class OpeningAndHelpers {
 
 		board[7][4] = new King(Color.BLACK, new Location(7, 4));
 		board[0][4] = new King(Color.WHITE, new Location(0, 4));
-
-		for (int i = 0; i < board.length; i++) {
-			for (int j = 0; j < board[0].length; j++) {
-				if (board[i][j] == null) {
-					board[i][j] = new Empty(new Location(i, j));
-				}
-			}
-		}
 
 		return board;
 	}
