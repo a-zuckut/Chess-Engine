@@ -99,11 +99,11 @@ public class Rook extends Piece {
 		possibleGenericMoves = new ArrayList<>();
 		
 		for(int x = 0; x < 8; x++) {
-			if(x != this.position.getX()) {
+			if(x != position.getX()) {
 				possibleGenericMoves.add(new Location(x, position.getY()));
 			}
-			if(x != this.position.getY()) {
-				possibleGenericMoves.add(new Location(this.position.getX(), x));
+			if(x != position.getY()) {
+				possibleGenericMoves.add(new Location(position.getX(), x));
 			}
 		}
 		return possibleGenericMoves;

@@ -43,19 +43,19 @@ public class Pawn extends Piece {
 			
 			// Check if possible to take pieces
 			if (position.getY() > 0 && position.getY() < 7 && position.getX() < 7 && position.getX() > 0) {
-				if (currentBoard[position.getX() + 1][position.getY() + 1].getPieceType() != PieceTypes.NULL) {
+				if (currentBoard[position.getX() + 1][position.getY() + 1].getPieceType() != PieceTypes.NULL && currentBoard[position.getX() + 1][position.getY() + 1].color != color) {
 					possibleMovesDependingOnBoard.add(new Location(position.getY() + 1, position.getX() + 1));
 				}
-				if (currentBoard[position.getX() + 1][position.getY() - 1].getPieceType() != PieceTypes.NULL) {
+				if (currentBoard[position.getX() + 1][position.getY() - 1].getPieceType() != PieceTypes.NULL && currentBoard[position.getX() + 1][position.getY() - 1].color != color) {
 					possibleMovesDependingOnBoard.add(new Location(position.getY() - 1, position.getX() + 1));
 				}
 			} else {
 				if (position.getY() < 7) {
-					if (currentBoard[position.getX() + 1][position.getY() + 1].getPieceType() != PieceTypes.NULL) {
+					if (currentBoard[position.getX() + 1][position.getY() + 1].getPieceType() != PieceTypes.NULL && currentBoard[position.getX() + 1][position.getY() + 1].color != color) {
 						possibleMovesDependingOnBoard.add(new Location(position.getY() + 1, position.getX() + 1));
 					}
 				} else { // must be at position 7 (H)
-					if (currentBoard[position.getX() + 1][position.getY() - 1].getPieceType() != PieceTypes.NULL) {
+					if (currentBoard[position.getX() + 1][position.getY() - 1].getPieceType() != PieceTypes.NULL && currentBoard[position.getX() + 1][position.getY() - 1].color != color) {
 						possibleMovesDependingOnBoard.add(new Location(position.getY() - 1, position.getX() + 1));
 					}
 				}
@@ -74,19 +74,19 @@ public class Pawn extends Piece {
 			}
 			// Taking Pieces
 			if (position.getY() > 0 && position.getY() < 7 && position.getX() < 7 && position.getX() > 0) {
-				if (currentBoard[position.getX() - 1][position.getY() - 1].getPieceType() != PieceTypes.NULL) {
+				if (currentBoard[position.getX() - 1][position.getY() - 1].getPieceType() != PieceTypes.NULL && currentBoard[position.getX() - 1][position.getY() - 1].color != color) {
 					possibleMovesDependingOnBoard.add(new Location(position.getY() - 1, position.getX() - 1));
 				}
-				if (currentBoard[position.getX() - 1][position.getY() + 1].getPieceType() != PieceTypes.NULL) {
+				if (currentBoard[position.getX() - 1][position.getY() + 1].getPieceType() != PieceTypes.NULL && currentBoard[position.getX() - 1][position.getY() + 1].color != color) {
 					possibleMovesDependingOnBoard.add(new Location(position.getY() + 1, position.getX() - 1));
 				}
 			} else {
 				if (position.getY() > 0) {
-					if (currentBoard[position.getX() - 1][position.getY() - 1].getPieceType() != PieceTypes.NULL) {
+					if (currentBoard[position.getX() - 1][position.getY() - 1].getPieceType() != PieceTypes.NULL && currentBoard[position.getX() - 1][position.getY() - 1].color != color) {
 						possibleMovesDependingOnBoard.add(new Location(position.getY() - 1, position.getX() - 1));
 					}
 				} else { // must be at position 0 (H)
-					if (currentBoard[position.getX() - 1][position.getY() + 1].getPieceType() != PieceTypes.NULL) {
+					if (currentBoard[position.getX() - 1][position.getY() + 1].getPieceType() != PieceTypes.NULL && currentBoard[position.getX() - 1][position.getY() + 1].color != color) {
 						possibleMovesDependingOnBoard.add(new Location(position.getY() + 1, position.getX() - 1));
 					}
 				}

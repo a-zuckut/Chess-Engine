@@ -141,10 +141,8 @@ public class ChessBoard {
 						JButton button = ((JButton) (e.getSource()));
 						if (!pieceSelected) {
 							repaintBoard();
-							System.out.println(button.getAlignmentX());
 							int i = (int)((button.getX()) / button.getWidth() - 1);
 							int j = (int)(7 - ((button.getY()) / button.getHeight() - 1));
-							System.out.println(i + " " + j);
 
 							Piece piece = board.getBoard()[j][i];
 							prev_position = piece;
@@ -168,7 +166,6 @@ public class ChessBoard {
 								Location prev_position = new Location(fj, fi);
 								Location final_position = new Location(i, j);
 								if(board.move(prev_position, final_position)) {
-									System.out.println("move");
 									toGoWhite = !toGoWhite;
 								} 
 							}

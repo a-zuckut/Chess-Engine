@@ -15,7 +15,7 @@ public class Board {
 	 * Row, Col
 	 */
 	private Piece[][] board;
-	private Color turn = Color.WHITE;
+	public Color turn = Color.WHITE;
 	
 	private ArrayList<Move> moves;
 
