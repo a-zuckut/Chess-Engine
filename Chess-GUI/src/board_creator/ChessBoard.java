@@ -159,8 +159,8 @@ public class ChessBoard {
 							pieceSelected = true;
 						} else {
 							if(button.getIcon() == possiblePositionImage) {
-								int i = button.getX() / 70 - 1;
-								int j = 7 - (button.getY() / 70 - 1);
+								int i = button.getX() / button.getWidth() - 1;
+								int j = 7 - (button.getY() / button.getHeight() - 1);
 								int fi = prev_position.getPos().getX();
 								int fj = prev_position.getPos().getY();
 								Location prev_position = new Location(fj, fi);

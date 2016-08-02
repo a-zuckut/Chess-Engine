@@ -162,7 +162,6 @@ public class Pawn extends Piece {
 			possibleGenericMoves.add(new Location(position.getX(), position.getY() - 2));
 		} else if (color == Color.WHITE) {
 			possibleGenericMoves.add(new Location(position.getX(), position.getY() + 1));
-		} else /* then color is black and not on first rank */ {
 			possibleGenericMoves.add(new Location(position.getX(), position.getY() + 1));
 		}
 
